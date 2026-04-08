@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\InstallerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StorefrontController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+Route::get('/setup/{token}', InstallerController::class)->name('setup.run');
 Route::get('/', [StorefrontController::class, 'home'])->name('home');
 Route::get('/shop', [StorefrontController::class, 'catalog'])->name('shop.index');
 Route::get('/products/{product:slug}', [StorefrontController::class, 'show'])->name('products.show');
