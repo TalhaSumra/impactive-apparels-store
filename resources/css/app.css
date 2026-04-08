@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --brand-ink: #1e140f;
+    --brand-cream: #fbf5ee;
+    --brand-mist: #fffdf9;
+    --brand-rust: #ad5a34;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    background: var(--brand-cream);
+    color: var(--brand-ink);
+}
+
+#app {
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading-font {
+    font-family: 'Syne', sans-serif;
+    letter-spacing: -0.04em;
+}
+
+::selection {
+    background: var(--brand-rust);
+    color: var(--brand-mist);
+}

@@ -1,0 +1,201 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Product;
+use Illuminate\Database\Seeder;
+
+class ProductSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        $products = [
+            [
+                'accent' => '#1f5aa6',
+                'available_sizes' => ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+                'badge' => 'Featured Kit',
+                'category' => 'Basketball Uniforms',
+                'description' => 'A full blue-and-gold basketball package for clubs, academies, and school teams that want a strong game-day presence with matching accessories.',
+                'featured' => true,
+                'highlights' => [
+                    'Custom jersey and shorts built for team branding.',
+                    'Optional backpack, socks, and training layer coordination.',
+                    'Designed for repeated custom orders and school league programs.',
+                ],
+                'lead_time_days' => 10,
+                'min_order_quantity' => 5,
+                'name' => 'Warriors Elite Basketball Set',
+                'preview_code' => '00',
+                'price' => 14990,
+                'secondary_accent' => '#d2a93a',
+                'short_description' => 'Blue and gold basketball team set with matching accessories and strong custom branding.',
+                'slug' => 'warriors-elite-basketball-set',
+                'sport' => 'Basketball',
+            ],
+            [
+                'accent' => '#4bc0d4',
+                'available_sizes' => ['S', 'M', 'L', 'XL', '2XL', '3XL'],
+                'badge' => 'Full Package',
+                'category' => 'Football Uniforms',
+                'description' => 'A performance-driven football package with jersey, pants, gloves, and training pieces designed for impact on the field and consistency off it.',
+                'featured' => true,
+                'highlights' => [
+                    'High-contrast jersey and pants combination.',
+                    'Includes supporting accessories for a complete team drop.',
+                    'Best suited for academies, clubs, and custom event squads.',
+                ],
+                'lead_time_days' => 12,
+                'min_order_quantity' => 7,
+                'name' => 'Eagles Pro Football Package',
+                'preview_code' => '22',
+                'price' => 18990,
+                'secondary_accent' => '#10385f',
+                'short_description' => 'Teal football uniform package with layered accessories for custom club and academy orders.',
+                'slug' => 'eagles-pro-football-package',
+                'sport' => 'Football',
+            ],
+            [
+                'accent' => '#d7ce2e',
+                'available_sizes' => ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+                'badge' => 'Best Seller',
+                'category' => 'Training Sets',
+                'description' => 'A bright yellow-and-black training set built for high-visibility team identity, pre-game warmups, and custom event wear.',
+                'featured' => true,
+                'highlights' => [
+                    'Strong contrast for bold academy and camp branding.',
+                    'Works well for basketball, fitness, and multi-sport groups.',
+                    'Available with names, numbers, and sponsor placements.',
+                ],
+                'lead_time_days' => 9,
+                'min_order_quantity' => 5,
+                'name' => 'Volt Performance Training Set',
+                'preview_code' => '34',
+                'price' => 13990,
+                'secondary_accent' => '#111111',
+                'short_description' => 'Yellow-and-black custom training set for camps, clubs, and bold team drops.',
+                'slug' => 'volt-performance-training-set',
+                'sport' => 'Training',
+            ],
+            [
+                'accent' => '#1d6f30',
+                'available_sizes' => ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+                'badge' => 'Club Favourite',
+                'category' => 'Basketball Uniforms',
+                'description' => 'A full green basketball look with jersey, shorts, and branded accessories for clubs that want a complete uniform identity.',
+                'featured' => false,
+                'highlights' => [
+                    'Balanced for matchday and travel presentation.',
+                    'Adds bags and warm-up pieces to the uniform story.',
+                    'Optimized for recurring seasonal reorders.',
+                ],
+                'lead_time_days' => 10,
+                'min_order_quantity' => 5,
+                'name' => 'Bucks Club Uniform Bundle',
+                'preview_code' => '34',
+                'price' => 15490,
+                'secondary_accent' => '#0c3317',
+                'short_description' => 'Green custom basketball bundle with coordinated accessories and travel pieces.',
+                'slug' => 'bucks-club-uniform-bundle',
+                'sport' => 'Basketball',
+            ],
+            [
+                'accent' => '#0f2f22',
+                'available_sizes' => ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+                'badge' => 'Premium Teamwear',
+                'category' => 'Basketball Uniforms',
+                'description' => 'A darker performance basketball kit with black and green balance for clubs looking for a more aggressive, premium visual tone.',
+                'featured' => false,
+                'highlights' => [
+                    'Clean dark base with sharp contrast details.',
+                    'Ideal for competitive clubs and premium tournament kits.',
+                    'Supports player-name and sponsor customization.',
+                ],
+                'lead_time_days' => 11,
+                'min_order_quantity' => 5,
+                'name' => 'Celtics Night Performance Kit',
+                'preview_code' => '34',
+                'price' => 15990,
+                'secondary_accent' => '#49a36b',
+                'short_description' => 'Dark basketball performance kit for clubs that want a premium, sharper team identity.',
+                'slug' => 'celtics-night-performance-kit',
+                'sport' => 'Basketball',
+            ],
+            [
+                'accent' => '#243e87',
+                'available_sizes' => ['S', 'M', 'L', 'XL', '2XL', '3XL'],
+                'badge' => 'Custom Fanwear',
+                'category' => 'Hoodies & Streetwear',
+                'description' => 'A bold all-over custom hoodie built for supporters, teams, and brands wanting player names, team names, and event-specific visual identity.',
+                'featured' => true,
+                'highlights' => [
+                    'Great for fanwear, school merch, and post-event drops.',
+                    'Supports names, numbers, and custom print themes.',
+                    'Suitable for smaller merch batches as well as team runs.',
+                ],
+                'lead_time_days' => 8,
+                'min_order_quantity' => 3,
+                'name' => 'Patriot Custom Hoodie',
+                'preview_code' => '00',
+                'price' => 8990,
+                'secondary_accent' => '#be2f3c',
+                'short_description' => 'All-over custom hoodie with names, numbers, and branded event styling.',
+                'slug' => 'patriot-custom-hoodie',
+                'sport' => 'Streetwear',
+            ],
+            [
+                'accent' => '#f4f3ef',
+                'available_sizes' => ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+                'badge' => 'Game Ready',
+                'category' => 'Baseball Uniforms',
+                'description' => 'A crisp baseball package with jersey, trousers, cap, and supporting pieces for clubs looking to present a unified professional roster.',
+                'featured' => false,
+                'highlights' => [
+                    'Baseball jersey, trousers, and supporting accessories.',
+                    'Sharp contrast palette for team logos and numbering.',
+                    'Strong option for tournament rosters and academy teams.',
+                ],
+                'lead_time_days' => 12,
+                'min_order_quantity' => 7,
+                'name' => 'All-Star Baseball Package',
+                'preview_code' => '12',
+                'price' => 16990,
+                'secondary_accent' => '#9e2132',
+                'short_description' => 'Professional baseball package with cap, jersey, trousers, and coordinated styling.',
+                'slug' => 'all-star-baseball-package',
+                'sport' => 'Baseball',
+            ],
+            [
+                'accent' => '#ce4037',
+                'available_sizes' => ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+                'badge' => 'Matchday Ready',
+                'category' => 'Soccer Uniforms',
+                'description' => 'A red custom soccer uniform with layered pieces for clubs that need a polished home kit, training set, and visual consistency across the squad.',
+                'featured' => false,
+                'highlights' => [
+                    'Soccer jersey and shorts built around club identity.',
+                    'Supports names, numbering, and sponsor zones.',
+                    'Effective for school, amateur, and semi-pro teamwear.',
+                ],
+                'lead_time_days' => 10,
+                'min_order_quantity' => 7,
+                'name' => 'Redline Soccer Match Kit',
+                'preview_code' => '23',
+                'price' => 13490,
+                'secondary_accent' => '#3a414d',
+                'short_description' => 'Red soccer match kit designed for club orders, school teams, and custom branding.',
+                'slug' => 'redline-soccer-match-kit',
+                'sport' => 'Soccer',
+            ],
+        ];
+
+        foreach ($products as $product) {
+            Product::query()->updateOrCreate(
+                ['slug' => $product['slug']],
+                $product,
+            );
+        }
+    }
+}
