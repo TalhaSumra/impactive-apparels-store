@@ -1,58 +1,112 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Impactive Apparels Store
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Impactive Apparels Store is a Laravel ecommerce website for a custom sportswear brand. It includes a modern public storefront, product catalog, cart, checkout flow, order storage, and a deployment setup for Render.
 
-## About Laravel
+## Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- PHP 8.3
+- Laravel 13
+- Inertia.js
+- Vue 3
+- Tailwind CSS
+- SQLite for local development
+- PostgreSQL for production deployment
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Custom sportswear storefront homepage
+- Product catalog with category and sport-focused browsing
+- Product detail pages
+- Session-based shopping cart
+- Guest checkout flow
+- Order and order item persistence
+- Seeded starter catalog for team uniforms, training sets, and fanwear
+- Authentication scaffolding for admin/account expansion
+- Render deployment configuration with Docker
 
-## Learning Laravel
+## Main Application Areas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Storefront routes: [routes/web.php](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/routes/web.php)
+- Public controllers: [app/Http/Controllers/StorefrontController.php](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/app/Http/Controllers/StorefrontController.php), [app/Http/Controllers/CartController.php](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/app/Http/Controllers/CartController.php), [app/Http/Controllers/CheckoutController.php](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/app/Http/Controllers/CheckoutController.php)
+- Storefront pages: [resources/js/Pages/Storefront](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/resources/js/Pages/Storefront)
+- Shared store layout: [resources/js/Layouts/StoreLayout.vue](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/resources/js/Layouts/StoreLayout.vue)
+- Catalog data: [database/seeders/ProductSeeder.php](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/database/seeders/ProductSeeder.php)
+- Production boot script: [scripts/render-start.sh](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/scripts/render-start.sh)
+- Render blueprint: [render.yaml](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/render.yaml)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Local Development
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+1. Install PHP, Composer, Node.js, and npm.
+2. Install dependencies:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+composer install
+npm install
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+3. Copy environment file and generate the app key:
 
-## Contributing
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. Create the local database and run migrations with seed data:
 
-## Code of Conduct
+```bash
+touch database/database.sqlite
+php artisan migrate --seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. Start the app:
 
-## Security Vulnerabilities
+```bash
+php artisan serve
+npm run dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. Open `http://127.0.0.1:8000`.
 
-## License
+## Useful Commands
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan migrate --seed
+php artisan test
+npm run build
+```
+
+## Production Deployment
+
+This project is prepared for deployment on Render using Docker and PostgreSQL.
+
+- Docker image definition: [Dockerfile](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/Dockerfile)
+- Render service and database config: [render.yaml](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/render.yaml)
+- Startup tasks: migration, cache prep, and product seeding in [scripts/render-start.sh](/Users/talhasumra/Data/Programming/AppTechnologies/website-dev/scripts/render-start.sh)
+
+During startup the production container:
+
+- prepares writable Laravel directories
+- caches config and views
+- runs migrations
+- seeds the product catalog
+- starts Apache on Render’s expected port
+
+## Current Status
+
+The project is ready for:
+
+- public storefront browsing
+- cart and checkout flow
+- database-backed order capture
+- Render deployment
+
+The project does not yet include:
+
+- online payment gateway integration
+- admin product management panel
+- live shipping calculation
+- email notification workflow
+
+## Repository
+
+GitHub repository: [TalhaSumra/impactive-apparels-store](https://github.com/TalhaSumra/impactive-apparels-store)
