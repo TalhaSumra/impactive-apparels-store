@@ -4,9 +4,13 @@ import ProductVisual from '@/Components/ProductVisual.vue';
 import { formatPrice } from '@/lib/format';
 
 defineProps({
+    compact: {
+        type: Boolean,
+        default: false,
+    },
     ctaLabel: {
         type: String,
-        default: 'View Product',
+        default: 'Choose options',
     },
     product: {
         type: Object,
@@ -17,53 +21,59 @@ defineProps({
 
 <template>
     <article
-        class="group flex h-full flex-col rounded-[34px] border border-[#2c1c14]/10 bg-white/78 p-3 shadow-[0_20px_60px_rgba(53,33,23,0.08)] backdrop-blur-xl transition hover:-translate-y-1"
+        class="group retail-card flex h-full flex-col overflow-hidden rounded-[20px] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_56px_rgba(16,19,23,0.12)]"
     >
-        <ProductVisual :product="product" compact />
+        <div class="relative">
+            <ProductVisual :product="product" compact />
+            <div class="absolute left-3 top-3">
+                <span class="rounded-full bg-[#d61f26] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
+                    {{ product.featured ? 'Featured' : 'Custom' }}
+                </span>
+            </div>
+        </div>
 
-        <div class="flex flex-1 flex-col p-3 sm:p-4">
-            <div class="flex items-start justify-between gap-4">
-                <div>
-                    <p
-                        class="text-xs font-semibold uppercase tracking-[0.26em] text-[#8b593f]"
-                    >
-                        {{ product.category }}
-                    </p>
-                    <h3 class="mt-2 text-2xl leading-tight text-[#1e140f]">
-                        {{ product.name }}
-                    </h3>
-                </div>
-                <span
-                    class="rounded-full border border-[#1e140f]/10 bg-[#f8efe6] px-3 py-2 text-sm font-bold text-[#1e140f]"
-                >
+        <div class="flex flex-1 flex-col p-4">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#6a7583]">
+                {{ product.category }}
+            </p>
+            <h3 :class="compact ? 'mt-2 text-[1.75rem] leading-[0.98] text-[#101317]' : 'mt-2 text-[2rem] leading-[0.95] text-[#101317]'">
+                {{ product.name }}
+            </h3>
+
+            <div class="mt-3 flex items-center gap-2 text-sm">
+                <span class="text-xl font-semibold text-[#101317]">
                     {{ formatPrice(product.price) }}
+                </span>
+                <span v-if="!compact" class="text-[#6a7583]">
+                    Made to order
                 </span>
             </div>
 
-            <p class="mt-4 text-sm leading-7 text-[#5f483b]">
+            <p v-if="!compact" class="mt-3 text-sm leading-6 text-[#4c5968]">
                 {{ product.short_description }}
             </p>
 
-            <div class="mt-4 flex flex-wrap gap-2">
-                <span
-                    v-for="size in product.available_sizes.slice(0, 4)"
-                    :key="size"
-                    class="rounded-full border border-[#1e140f]/8 bg-[#fdf8f3] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#6d5142]"
-                >
-                    {{ size }}
+            <div v-if="!compact" class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full bg-[#f3f5f7] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4c5968]">
+                    {{ product.sport }}
+                </span>
+                <span class="rounded-full bg-[#f3f5f7] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4c5968]">
+                    {{ product.min_order_quantity }} pcs min
+                </span>
+                <span class="rounded-full bg-[#f3f5f7] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4c5968]">
+                    {{ product.lead_time_days }} day lead
                 </span>
             </div>
 
-            <div class="mt-6 flex items-center justify-between gap-3">
-                <div class="text-sm text-[#6b5346]">
-                    {{ product.lead_time_days }} day lead time
-                </div>
+            <div :class="compact ? 'mt-4 flex items-center justify-end border-t border-[#e1e6eb] pt-4' : 'mt-5 flex items-center justify-between border-t border-[#e1e6eb] pt-4'">
+                <span v-if="!compact" class="text-sm font-medium text-[#6a7583]">
+                    {{ product.available_sizes.slice(0, 3).join(' / ') }}
+                </span>
                 <Link
                     :href="route('products.show', product.slug)"
-                    class="inline-flex items-center gap-2 rounded-full bg-[#1e140f] px-4 py-2 text-sm font-semibold text-[#f7efe6] transition hover:bg-[#ad5a34]"
+                    class="inline-flex items-center justify-center rounded-[12px] bg-[#101317] px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#d61f26]"
                 >
                     {{ ctaLabel }}
-                    <span aria-hidden="true">→</span>
                 </Link>
             </div>
         </div>

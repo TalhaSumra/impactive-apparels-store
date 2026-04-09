@@ -1,0 +1,53 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="1200" rx="64" fill="#120D0B"/>
+<rect width="1600" height="1200" rx="64" fill="url(#paint0_linear_276_2)"/>
+<circle cx="1325" cy="239" r="243" fill="#F1904E" fill-opacity="0.22"/>
+<circle cx="269" cy="1001" r="277" fill="#9F4D2C" fill-opacity="0.32"/>
+<path d="M0 986C223.234 800.809 415.948 721.396 578.142 747.76C740.336 774.124 919.978 888.309 1117.07 1090.32L1600 1200H0V986Z" fill="url(#paint1_linear_276_2)"/>
+<rect x="88" y="90" width="620" height="420" rx="40" fill="#F8F0E7" fill-opacity="0.1" stroke="white" stroke-opacity="0.16"/>
+<rect x="892" y="684" width="620" height="344" rx="40" fill="#F8F0E7" fill-opacity="0.08" stroke="white" stroke-opacity="0.12"/>
+<path d="M943 240L1087.4 148H1356L1234.4 240H943Z" fill="#E9C9B3" fill-opacity="0.1"/>
+<path d="M915 280L1029.4 208H1298L1182.4 280H915Z" fill="#E9C9B3" fill-opacity="0.08"/>
+<g opacity="0.94">
+<rect x="208" y="282" width="106" height="222" rx="28" fill="#D75D35"/>
+<rect x="170" y="302" width="52" height="90" rx="20" transform="rotate(-16 170 302)" fill="#F0B57D"/>
+<rect x="300" y="302" width="52" height="90" rx="20" transform="rotate(16 300 302)" fill="#F0B57D"/>
+<path d="M230 490H292V614C292 626.15 282.15 636 270 636H252C239.85 636 230 626.15 230 614V490Z" fill="#F0B57D"/>
+<text x="261" y="414" fill="white" font-size="74" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">24</text>
+</g>
+<g opacity="0.9">
+<rect x="462" y="238" width="118" height="248" rx="28" fill="#231814"/>
+<rect x="420" y="258" width="56" height="98" rx="20" transform="rotate(-16 420 258)" fill="#A44E2B"/>
+<rect x="566" y="258" width="56" height="98" rx="20" transform="rotate(16 566 258)" fill="#A44E2B"/>
+<path d="M488 476H554V614C554 626.15 544.15 636 532 636H510C497.85 636 488 626.15 488 614V476Z" fill="#A44E2B"/>
+<text x="521" y="388" fill="#F8F0E7" font-size="82" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">11</text>
+</g>
+<g opacity="0.96">
+<rect x="1136" y="328" width="184" height="232" rx="38" fill="#FAE5D7" fill-opacity="0.12" stroke="white" stroke-opacity="0.2"/>
+<rect x="1170" y="364" width="116" height="102" rx="26" fill="#D75D35"/>
+<rect x="1140" y="382" width="42" height="72" rx="18" transform="rotate(-16 1140 382)" fill="#F6C298"/>
+<rect x="1272" y="382" width="42" height="72" rx="18" transform="rotate(16 1272 382)" fill="#F6C298"/>
+<path d="M1194 462H1260V560H1194V462Z" fill="#F6C298"/>
+<text x="1228" y="434" fill="white" font-size="60" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">07</text>
+</g>
+<text x="118" y="170" fill="#FAE5D7" font-size="28" font-family="Arial, sans-serif" letter-spacing="8">IMPACTIVE APPARELS</text>
+<text x="118" y="240" fill="white" font-size="112" font-family="Arial, sans-serif" font-weight="700">Game-ready</text>
+<text x="118" y="336" fill="white" font-size="112" font-family="Arial, sans-serif" font-weight="700">team kits</text>
+<text x="118" y="410" fill="#E9C9B3" font-size="34" font-family="Arial, sans-serif">Custom uniforms, warmups, and branded fanwear.</text>
+<text x="118" y="958" fill="#FAE5D7" font-size="26" font-family="Arial, sans-serif" letter-spacing="6">BASKETBALL  /  FOOTBALL  /  SOCCER  /  BASEBALL</text>
+<text x="952" y="786" fill="#FAE5D7" font-size="28" font-family="Arial, sans-serif" letter-spacing="8">CUSTOM ORDER FLOW</text>
+<text x="952" y="862" fill="white" font-size="82" font-family="Arial, sans-serif" font-weight="700">Pick a kit.</text>
+<text x="952" y="940" fill="white" font-size="82" font-family="Arial, sans-serif" font-weight="700">Add sizes.</text>
+<text x="952" y="1018" fill="white" font-size="82" font-family="Arial, sans-serif" font-weight="700">Send order.</text>
+<defs>
+<linearGradient id="paint0_linear_276_2" x1="145" y1="64" x2="1477" y2="1105" gradientUnits="userSpaceOnUse">
+<stop stop-color="#201613"/>
+<stop offset="0.52" stop-color="#3A2419"/>
+<stop offset="1" stop-color="#150F0D"/>
+</linearGradient>
+<linearGradient id="paint1_linear_276_2" x1="800" y1="780" x2="800" y2="1200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#A65130" stop-opacity="0"/>
+<stop offset="1" stop-color="#A65130" stop-opacity="0.55"/>
+</linearGradient>
+</defs>
+</svg>

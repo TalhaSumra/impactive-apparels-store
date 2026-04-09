@@ -9,342 +9,207 @@ const cartCount = computed(() => page.props.cart?.count ?? 0);
 const cartSubtotal = computed(() => page.props.cart?.subtotal ?? 0);
 const flashSuccess = computed(() => page.props.flash?.success ?? '');
 
-const teamUniformSports = [
-    'Basketball',
-    'Football',
-    'Baseball',
-    'Soccer',
-    'Volleyball',
-    'Cricket',
-    'Track',
-    'Cheerleading',
-];
-
-const customCollections = [
+const navigationLinks = [
     {
-        category: 'Basketball Uniforms',
-        label: 'Basketball Sets',
+        href: route('home'),
+        label: 'Home',
+        current: () => route().current('home'),
     },
     {
-        category: 'Football Uniforms',
-        label: 'Football Packages',
+        href: route('shop.index'),
+        label: 'Shop',
+        current: () => route().current('shop.index') || route().current('products.show'),
     },
     {
-        category: 'Soccer Uniforms',
-        label: 'Soccer Kits',
+        href: route('shop.index', { sport: 'Basketball' }),
+        label: 'Basketball',
+        current: () => false,
     },
     {
-        category: 'Baseball Uniforms',
-        label: 'Baseball Uniforms',
+        href: route('shop.index', { sport: 'Football' }),
+        label: 'Football',
+        current: () => false,
     },
     {
-        category: 'Training Sets',
-        label: 'Training Sets',
-    },
-    {
-        category: 'Hoodies & Streetwear',
-        label: 'Hoodies & Fanwear',
+        href: route('shop.index', { category: 'Hoodies & Streetwear' }),
+        label: 'Apparel',
+        current: () => false,
     },
 ];
 
-const quickLinks = [
+const utilityLinks = [
     {
-        hash: '#pricing',
-        label: 'Pricing',
+        href: route('home') + '#process',
+        label: 'How to order',
     },
     {
-        hash: '#process',
-        label: 'How It Works',
-    },
-    {
-        hash: '#faq',
+        href: route('home') + '#faq',
         label: 'FAQ',
+    },
+    {
+        href: route('checkout.index'),
+        label: 'Quick order',
     },
 ];
 </script>
 
 <template>
-    <div class="min-h-screen bg-[#f8f3ee] text-[#1e140f]">
-        <div class="bg-[#1b120d] text-[#f7efe6]">
-            <div class="mx-auto flex max-w-[1380px] flex-col gap-3 px-4 py-3 text-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-                <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-                    <span>Custom sportswear manufacturing for clubs, schools, and academies.</span>
-                    <span class="text-white/55">2-3 week production on most standard orders.</span>
+    <div class="min-h-screen bg-[#f4f5f7] text-[#101317] retail-grid">
+        <div class="bg-[#101317] text-white">
+            <div class="mx-auto flex max-w-[1400px] flex-col gap-3 px-4 py-3 text-[13px] sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+                <div class="flex flex-wrap items-center gap-4">
+                    <span class="font-semibold uppercase tracking-[0.14em] text-white/86">Custom sports apparel</span>
+                    <span class="text-white/56">Built for teams, schools, academies, and merch drops.</span>
                 </div>
-                <div class="flex flex-wrap items-center gap-3 font-semibold">
+                <div class="flex flex-wrap items-center gap-4">
                     <Link
-                        :href="route('shop.index')"
-                        class="rounded-full border border-white/10 px-4 py-2 transition hover:border-white/20 hover:bg-white/5"
+                        v-for="item in utilityLinks"
+                        :key="item.label"
+                        :href="item.href"
+                        class="text-white/76 transition hover:text-white"
                     >
-                        View Pricing
-                    </Link>
-                    <Link
-                        :href="route('shop.index')"
-                        class="rounded-full bg-[#ad5a34] px-4 py-2 text-white transition hover:bg-[#8d4829]"
-                    >
-                        Start Custom Order
+                        {{ item.label }}
                     </Link>
                 </div>
             </div>
         </div>
 
-        <div class="mx-auto max-w-[1380px] px-4 py-4 sm:px-6 lg:px-8">
-            <header
-                class="sticky top-4 z-30 rounded-[34px] border border-[#2c1c14]/10 bg-white/85 px-5 py-4 shadow-[0_24px_80px_rgba(53,33,23,0.08)] backdrop-blur-xl"
-            >
-                <div class="flex flex-col gap-4">
+        <div class="border-b border-[#d9dee4] bg-[#d61f26] text-white">
+            <div class="mx-auto flex max-w-[1400px] flex-col gap-2 px-4 py-3 text-[13px] font-semibold uppercase tracking-[0.16em] sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+                <span>Clean ordering flow for custom uniforms and apparel.</span>
+                <span class="text-white/88">Add products to cart, then send your team notes at checkout.</span>
+            </div>
+        </div>
+
+        <header class="border-b border-[#d9dee4] bg-white">
+            <div class="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col gap-5 py-5">
                     <div class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
                         <div class="flex items-center gap-4">
                             <Link :href="route('home')" class="flex items-center gap-3">
                                 <span
-                                    class="flex size-12 items-center justify-center rounded-full bg-[#1e140f] text-sm font-semibold tracking-[0.28em] text-[#f7efe6]"
+                                    class="flex size-12 items-center justify-center bg-[#101317] text-sm font-semibold uppercase tracking-[0.26em] text-white"
                                 >
                                     IA
                                 </span>
                                 <div>
-                                    <p
-                                        class="heading-font text-sm uppercase tracking-[0.34em] text-[#7b4a34]"
-                                    >
+                                    <p class="heading-font text-[0.95rem] uppercase tracking-[0.3em] text-[#d61f26]">
                                         Impactive
                                     </p>
-                                    <p class="text-base font-semibold text-[#1e140f]">
+                                    <p class="text-lg font-semibold uppercase tracking-[0.08em] text-[#101317]">
                                         Apparels
                                     </p>
                                 </div>
                             </Link>
-                            <div class="hidden text-sm text-[#5e483b] lg:block">
-                                Public storefront for custom team uniforms,
-                                custom apparel, and direct order checkout.
+
+                            <div class="hidden border-l border-[#d9dee4] pl-4 text-sm text-[#4c5968] lg:block">
+                                Custom uniforms, fanwear, and order-ready apparel.
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap items-center gap-3 text-sm font-semibold text-[#4d392d]">
-                            <Link
-                                :href="route('home')"
-                                class="rounded-full px-4 py-2 transition hover:bg-[#f5ece3] hover:text-[#ad5a34]"
-                                :class="route().current('home') ? 'bg-[#f5ece3] text-[#ad5a34]' : ''"
-                            >
-                                Home
-                            </Link>
-                            <Link
-                                :href="route('shop.index')"
-                                class="rounded-full px-4 py-2 transition hover:bg-[#f5ece3] hover:text-[#ad5a34]"
-                                :class="route().current('shop.index') || route().current('products.show') ? 'bg-[#f5ece3] text-[#ad5a34]' : ''"
-                            >
-                                Shop
-                            </Link>
+                        <div class="flex flex-wrap items-center gap-3">
                             <Link
                                 :href="route('checkout.index')"
-                                class="rounded-full px-4 py-2 transition hover:bg-[#f5ece3] hover:text-[#ad5a34]"
-                                :class="route().current('checkout.index') || route().current('checkout.success') ? 'bg-[#f5ece3] text-[#ad5a34]' : ''"
+                                class="inline-flex items-center justify-center rounded-[12px] border border-[#101317] px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.12em] text-[#101317] transition hover:border-[#d61f26] hover:text-[#d61f26]"
                             >
-                                Quote / Checkout
+                                Order
                             </Link>
                             <Link
                                 :href="route('cart.index')"
-                                class="inline-flex items-center gap-3 rounded-full bg-[#1e140f] px-4 py-2 text-[#f7efe6] transition hover:-translate-y-0.5 hover:bg-[#ad5a34]"
+                                class="inline-flex items-center gap-3 rounded-[12px] bg-[#101317] px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#d61f26]"
                             >
                                 <span>Cart</span>
-                                <span
-                                    class="rounded-full bg-white/15 px-2 py-1 text-xs font-bold tracking-[0.18em]"
-                                >
-                                    {{ cartCount }}
-                                </span>
-                                <span class="hidden text-xs text-white/72 sm:inline">
-                                    {{ formatPrice(cartSubtotal) }}
-                                </span>
+                                <span>{{ cartCount }}</span>
+                                <span class="hidden text-white/70 sm:inline">{{ formatPrice(cartSubtotal) }}</span>
                             </Link>
                         </div>
                     </div>
 
-                    <div class="hidden items-center gap-4 xl:flex">
-                        <div class="group relative">
-                            <button
-                                type="button"
-                                class="rounded-full px-4 py-2 text-sm font-semibold text-[#4d392d] transition hover:bg-[#f5ece3] hover:text-[#ad5a34]"
-                            >
-                                Team Uniforms
-                            </button>
-                            <div
-                                class="invisible absolute left-0 top-[calc(100%+12px)] z-30 w-[560px] rounded-[30px] border border-[#2c1c14]/10 bg-white p-5 opacity-0 shadow-[0_24px_80px_rgba(53,33,23,0.14)] transition group-hover:visible group-hover:opacity-100"
-                            >
-                                <p class="text-xs uppercase tracking-[0.28em] text-[#8a563c]">
-                                    Shop by sport
-                                </p>
-                                <div class="mt-4 grid gap-3 sm:grid-cols-2">
-                                    <Link
-                                        v-for="sport in teamUniformSports"
-                                        :key="sport"
-                                        :href="route('shop.index', { sport })"
-                                        class="rounded-[22px] border border-[#1e140f]/8 bg-[#fcf7f1] px-4 py-4 text-sm font-semibold text-[#1e140f] transition hover:border-[#ad5a34]/30 hover:text-[#ad5a34]"
-                                    >
-                                        {{ sport }}
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="group relative">
-                            <button
-                                type="button"
-                                class="rounded-full px-4 py-2 text-sm font-semibold text-[#4d392d] transition hover:bg-[#f5ece3] hover:text-[#ad5a34]"
-                            >
-                                Custom Apparel
-                            </button>
-                            <div
-                                class="invisible absolute left-0 top-[calc(100%+12px)] z-30 w-[520px] rounded-[30px] border border-[#2c1c14]/10 bg-white p-5 opacity-0 shadow-[0_24px_80px_rgba(53,33,23,0.14)] transition group-hover:visible group-hover:opacity-100"
-                            >
-                                <p class="text-xs uppercase tracking-[0.28em] text-[#8a563c]">
-                                    Collections
-                                </p>
-                                <div class="mt-4 grid gap-3 sm:grid-cols-2">
-                                    <Link
-                                        v-for="item in customCollections"
-                                        :key="item.category"
-                                        :href="route('shop.index', { category: item.category })"
-                                        class="rounded-[22px] border border-[#1e140f]/8 bg-[#fcf7f1] px-4 py-4 text-sm font-semibold text-[#1e140f] transition hover:border-[#ad5a34]/30 hover:text-[#ad5a34]"
-                                    >
-                                        {{ item.label }}
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-2">
+                    <div class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+                        <nav class="flex flex-wrap items-center gap-4 text-sm font-semibold uppercase tracking-[0.12em] text-[#101317]">
                             <Link
-                                v-for="item in quickLinks"
+                                v-for="item in navigationLinks"
                                 :key="item.label"
-                                :href="route('home') + item.hash"
-                                class="rounded-full px-4 py-2 text-sm font-semibold text-[#4d392d] transition hover:bg-[#f5ece3] hover:text-[#ad5a34]"
+                                :href="item.href"
+                                class="transition hover:text-[#d61f26]"
+                                :class="item.current() ? 'text-[#d61f26]' : ''"
                             >
                                 {{ item.label }}
                             </Link>
-                        </div>
+                        </nav>
 
-                        <div class="ml-auto text-sm font-semibold text-[#8a563c]">
-                            Need help with a full team order? Start in the shop and submit the request online.
+                        <div class="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6a7583]">
+                            <span class="rounded-full bg-[#f3f5f7] px-3 py-1.5">Basketball</span>
+                            <span class="rounded-full bg-[#f3f5f7] px-3 py-1.5">Football</span>
+                            <span class="rounded-full bg-[#f3f5f7] px-3 py-1.5">Soccer</span>
+                            <span class="rounded-full bg-[#f3f5f7] px-3 py-1.5">Hoodies</span>
                         </div>
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-2 xl:hidden">
-                        <Link
-                            v-for="sport in teamUniformSports.slice(0, 6)"
-                            :key="sport"
-                            :href="route('shop.index', { sport })"
-                            class="rounded-full border border-[#1e140f]/10 bg-[#fcf7f1] px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#6a5346] transition hover:border-[#ad5a34]/30 hover:text-[#ad5a34]"
-                        >
-                            {{ sport }}
-                        </Link>
                     </div>
                 </div>
-            </header>
+            </div>
+        </header>
 
+        <div class="mx-auto max-w-[1400px] px-4 py-6 sm:px-6 lg:px-8">
             <div
                 v-if="flashSuccess"
-                class="mt-4 rounded-[28px] border border-[#9e623c]/20 bg-[#fff6ed] px-5 py-4 text-sm font-medium text-[#7a4d34]"
+                class="mb-6 rounded-[16px] border border-[#f2c1c3] bg-[#fff5f5] px-5 py-4 text-sm font-medium text-[#b11218]"
             >
                 {{ flashSuccess }}
             </div>
 
-            <main class="pb-12 pt-6">
+            <main class="pb-12">
                 <slot />
             </main>
 
-            <footer
-                class="rounded-[32px] border border-[#2c1c14]/10 bg-white/70 px-5 py-6 text-sm text-[#5e483b] backdrop-blur-xl"
-            >
-                <div class="grid gap-6 lg:grid-cols-[1.1fr_0.7fr_0.7fr_0.9fr]">
+            <footer class="retail-card rounded-[20px] p-6">
+                <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.9fr]">
                     <div>
-                        <p class="font-semibold text-[#1e140f]">
+                        <p class="heading-font text-2xl uppercase text-[#101317]">
                             Impactive Apparels
                         </p>
-                        <p class="mt-3 max-w-md leading-7">
-                            Inspired by large custom teamwear storefronts, but
-                            built specifically for your sportswear brand and
-                            direct public ordering workflow.
+                        <p class="mt-3 max-w-md text-sm leading-7 text-[#4c5968]">
+                            Retail-style storefront for custom sportswear, team uniforms, and direct online ordering.
                         </p>
                     </div>
 
                     <div>
-                        <p class="text-xs uppercase tracking-[0.28em] text-[#8a563c]">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7583]">
                             Shop
                         </p>
-                        <div class="mt-3 grid gap-2">
-                            <Link
-                                :href="route('shop.index')"
-                                class="transition hover:text-[#ad5a34]"
-                            >
-                                All Products
-                            </Link>
-                            <Link
-                                :href="route('shop.index', { sport: 'Basketball' })"
-                                class="transition hover:text-[#ad5a34]"
-                            >
-                                Basketball
-                            </Link>
-                            <Link
-                                :href="route('shop.index', { sport: 'Football' })"
-                                class="transition hover:text-[#ad5a34]"
-                            >
-                                Football
-                            </Link>
-                            <Link
-                                :href="route('shop.index', { category: 'Hoodies & Streetwear' })"
-                                class="transition hover:text-[#ad5a34]"
-                            >
-                                Hoodies
-                            </Link>
+                        <div class="mt-3 grid gap-2 text-sm text-[#101317]">
+                            <Link :href="route('shop.index')" class="transition hover:text-[#d61f26]">All products</Link>
+                            <Link :href="route('shop.index', { sport: 'Basketball' })" class="transition hover:text-[#d61f26]">Basketball</Link>
+                            <Link :href="route('shop.index', { sport: 'Football' })" class="transition hover:text-[#d61f26]">Football</Link>
                         </div>
                     </div>
 
                     <div>
-                        <p class="text-xs uppercase tracking-[0.28em] text-[#8a563c]">
-                            Ordering
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7583]">
+                            Order
                         </p>
-                        <div class="mt-3 grid gap-2">
-                            <Link
-                                :href="route('cart.index')"
-                                class="transition hover:text-[#ad5a34]"
-                            >
-                                Cart
-                            </Link>
-                            <Link
-                                :href="route('checkout.index')"
-                                class="transition hover:text-[#ad5a34]"
-                            >
-                                Checkout
-                            </Link>
-                            <Link
-                                :href="route('home') + '#process'"
-                                class="transition hover:text-[#ad5a34]"
-                            >
-                                How It Works
-                            </Link>
-                            <Link
-                                :href="route('home') + '#faq'"
-                                class="transition hover:text-[#ad5a34]"
-                            >
-                                FAQ
-                            </Link>
+                        <div class="mt-3 grid gap-2 text-sm text-[#101317]">
+                            <Link :href="route('cart.index')" class="transition hover:text-[#d61f26]">Cart</Link>
+                            <Link :href="route('checkout.index')" class="transition hover:text-[#d61f26]">Checkout</Link>
+                            <Link :href="route('home') + '#faq'" class="transition hover:text-[#d61f26]">FAQ</Link>
                         </div>
                     </div>
 
                     <div>
-                        <p class="text-xs uppercase tracking-[0.28em] text-[#8a563c]">
-                            Fast Access
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7583]">
+                            Fast action
                         </p>
                         <div class="mt-3 flex flex-col gap-3">
                             <Link
                                 :href="route('shop.index')"
-                                class="rounded-full border border-[#1e140f]/10 px-4 py-2 text-center font-semibold transition hover:border-[#ad5a34]/30 hover:text-[#ad5a34]"
+                                class="inline-flex items-center justify-center rounded-[12px] bg-[#101317] px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#d61f26]"
                             >
-                                Browse Catalog
+                                Shop now
                             </Link>
                             <Link
-                                :href="route('shop.index')"
-                                class="rounded-full bg-[#1e140f] px-4 py-2 text-center font-semibold text-[#f7efe6] transition hover:bg-[#ad5a34]"
+                                :href="route('checkout.index')"
+                                class="inline-flex items-center justify-center rounded-[12px] border border-[#101317] px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.12em] text-[#101317] transition hover:border-[#d61f26] hover:text-[#d61f26]"
                             >
-                                Start Custom Order
+                                Quick order
                             </Link>
                         </div>
                     </div>

@@ -26,6 +26,7 @@ class ProductPresenter
             'min_order_quantity' => $product->min_order_quantity,
             'available_sizes' => $product->available_sizes ?? [],
             'highlights' => $product->highlights ?? [],
+            'image' => StorefrontImageCatalog::productImage($product->slug),
         ];
     }
 }

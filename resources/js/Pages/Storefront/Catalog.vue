@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue';
 import { Head, Link, router, useForm } from '@inertiajs/vue3';
 import ProductCard from '@/Components/ProductCard.vue';
 import StoreLayout from '@/Layouts/StoreLayout.vue';
@@ -25,7 +26,20 @@ const props = defineProps({
 const filtersForm = useForm({
     category: props.filters.category ?? '',
     search: props.filters.search ?? '',
+    sort: props.filters.sort ?? 'featured',
     sport: props.filters.sport ?? '',
+});
+
+const pageTitle = computed(() => {
+    if (filtersForm.category) {
+        return filtersForm.category;
+    }
+
+    if (filtersForm.sport) {
+        return `${filtersForm.sport} Apparel`;
+    }
+
+    return 'Shop All Apparel';
 });
 
 function submit() {
@@ -39,6 +53,7 @@ function submit() {
 function clearFilters() {
     filtersForm.category = '';
     filtersForm.search = '';
+    filtersForm.sort = 'featured';
     filtersForm.sport = '';
     submit();
 }
@@ -48,170 +63,197 @@ function clearFilters() {
     <Head title="Shop Custom Sportswear" />
 
     <StoreLayout>
-        <section class="grid gap-6 xl:grid-cols-[1.08fr_0.92fr]">
-            <div
-                class="rounded-[38px] border border-[#1e140f]/10 bg-white/78 p-6 shadow-[0_24px_80px_rgba(53,33,23,0.08)] backdrop-blur-xl sm:p-8"
-            >
-                <p class="text-xs uppercase tracking-[0.32em] text-[#8a563c]">
-                    Full Catalog
-                </p>
-                <h1 class="mt-4 max-w-3xl text-5xl leading-tight text-[#1e140f]">
-                    Shop the product grid the way major teamwear sites do it.
-                </h1>
-                <p class="mt-4 max-w-2xl text-base leading-8 text-[#5f483b]">
-                    Search by sport, filter by collection, and move straight
-                    into product pages built for public ordering.
-                </p>
+        <section class="retail-card rounded-[24px] overflow-hidden">
+            <div class="grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
+                <div class="border-b border-[#d9dee4] bg-white p-6 lg:border-b-0 lg:border-r lg:p-8">
+                    <p class="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#d61f26]">
+                        Collection
+                    </p>
+                    <h1 class="mt-3 text-[clamp(3.2rem,5vw,5.4rem)] leading-[0.9] text-[#101317]">
+                        {{ pageTitle }}
+                    </h1>
+                    <p class="mt-3 text-base leading-7 text-[#4c5968]">
+                        {{ products.length }} styles ready to browse and order.
+                    </p>
 
-                <form
-                    @submit.prevent="submit"
-                    class="mt-8 grid gap-4 rounded-[30px] border border-[#1e140f]/8 bg-[#fcf7f1] p-4 lg:grid-cols-[1.3fr_0.8fr_0.8fr_auto_auto]"
-                >
-                    <input
-                        v-model="filtersForm.search"
-                        type="text"
-                        placeholder="Search products, sports, or keywords"
-                        class="rounded-2xl border border-[#1e140f]/10 bg-white px-4 py-3 text-sm text-[#1e140f] outline-none transition focus:border-[#ad5a34]/40"
-                    />
-
-                    <select
-                        v-model="filtersForm.category"
-                        class="rounded-2xl border border-[#1e140f]/10 bg-white px-4 py-3 text-sm text-[#1e140f] outline-none transition focus:border-[#ad5a34]/40"
-                    >
-                        <option value="">All categories</option>
-                        <option
-                            v-for="category in categories"
-                            :key="category"
-                            :value="category"
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        <Link
+                            :href="route('shop.index', { sport: 'Basketball' })"
+                            class="rounded-full bg-[#f3f5f7] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4c5968] transition hover:bg-[#101317] hover:text-white"
                         >
-                            {{ category }}
-                        </option>
-                    </select>
+                            Basketball
+                        </Link>
+                        <Link
+                            :href="route('shop.index', { sport: 'Football' })"
+                            class="rounded-full bg-[#f3f5f7] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4c5968] transition hover:bg-[#101317] hover:text-white"
+                        >
+                            Football
+                        </Link>
+                        <Link
+                            :href="route('shop.index', { category: 'Hoodies & Streetwear' })"
+                            class="rounded-full bg-[#f3f5f7] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4c5968] transition hover:bg-[#101317] hover:text-white"
+                        >
+                            Apparel
+                        </Link>
+                    </div>
+                </div>
 
-                    <select
-                        v-model="filtersForm.sport"
-                        class="rounded-2xl border border-[#1e140f]/10 bg-white px-4 py-3 text-sm text-[#1e140f] outline-none transition focus:border-[#ad5a34]/40"
-                    >
-                        <option value="">All sports</option>
-                        <option v-for="sport in sports" :key="sport" :value="sport">
-                            {{ sport }}
-                        </option>
-                    </select>
+                <div
+                    class="min-h-[260px]"
+                    :class="products[0]?.image ? '' : 'flex items-end bg-[linear-gradient(145deg,#101317_0%,#2b3138_44%,#d61f26_100%)] p-6 text-white lg:p-8'"
+                >
+                    <img
+                        v-if="products[0]?.image"
+                        :src="products[0].image"
+                        alt="Shop collection"
+                        class="h-full w-full object-cover"
+                    />
+                    <div v-else>
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/66">
+                            Product gallery
+                        </p>
+                        <p class="mt-3 max-w-md text-[2.8rem] leading-[0.92] text-white">
+                            Real collection photography can be dropped here next.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <button
-                        type="submit"
-                        class="rounded-2xl bg-[#1e140f] px-5 py-3 text-sm font-semibold text-[#f7efe6] transition hover:bg-[#ad5a34]"
-                    >
-                        Apply Filters
-                    </button>
-
+        <section class="mt-6 grid gap-6 xl:grid-cols-[290px_1fr]">
+            <aside class="retail-card rounded-[24px] p-5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#6a7583]">
+                            Filter
+                        </p>
+                        <h2 class="mt-2 text-3xl text-[#101317]">
+                            Refine products
+                        </h2>
+                    </div>
                     <button
                         type="button"
                         @click="clearFilters"
-                        class="rounded-2xl border border-[#1e140f]/10 bg-white px-5 py-3 text-sm font-semibold text-[#1e140f] transition hover:border-[#ad5a34]/30 hover:text-[#ad5a34]"
+                        class="text-sm font-semibold uppercase tracking-[0.12em] text-[#d61f26]"
                     >
                         Reset
                     </button>
-                </form>
-            </div>
-
-            <div class="grid gap-6">
-                <div
-                    class="rounded-[38px] bg-[#1a120e] p-6 text-[#f7efe6] shadow-[0_30px_120px_rgba(26,18,14,0.28)] sm:p-8"
-                >
-                    <p class="text-xs uppercase tracking-[0.32em] text-[#d9b392]">
-                        Need a quote-style order?
-                    </p>
-                    <h2 class="mt-4 text-4xl leading-tight sm:text-5xl">
-                        Start with a product, then use checkout to submit the
-                        full team request online.
-                    </h2>
-                    <p class="mt-5 text-base leading-8 text-[#f7efe6]/74">
-                        This keeps the Wooter-like sales structure while still
-                        giving you a real ecommerce path instead of a brochure-only site.
-                    </p>
-                    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-                        <Link
-                            :href="route('checkout.index')"
-                            class="inline-flex items-center justify-center gap-2 rounded-full bg-[#ad5a34] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#8d4829]"
-                        >
-                            Go to Checkout
-                            <span aria-hidden="true">→</span>
-                        </Link>
-                        <Link
-                            :href="route('cart.index')"
-                            class="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-[#f7efe6] transition hover:bg-white/10"
-                        >
-                            Review Cart
-                        </Link>
-                    </div>
                 </div>
 
-                <div
-                    class="rounded-[34px] border border-[#1e140f]/10 bg-white/78 p-6 shadow-[0_24px_80px_rgba(53,33,23,0.08)] backdrop-blur-xl"
-                >
-                    <p class="text-xs uppercase tracking-[0.3em] text-[#8a563c]">
-                        Quick Sports
-                    </p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <Link
-                            v-for="sport in sports"
-                            :key="sport"
-                            :href="route('shop.index', { sport })"
-                            class="rounded-full border border-[#1e140f]/10 bg-[#fcf7f1] px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#6a5346] transition hover:border-[#ad5a34]/30 hover:text-[#ad5a34]"
-                        >
-                            {{ sport }}
-                        </Link>
+                <form @submit.prevent="submit" class="mt-6 space-y-5">
+                    <div>
+                        <label class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7583]">
+                            Search
+                        </label>
+                        <input
+                            v-model="filtersForm.search"
+                            type="text"
+                            placeholder="Search styles"
+                            class="mt-2 w-full rounded-[14px] border border-[#d9dee4] bg-white px-4 py-3 text-sm text-[#101317] outline-none transition focus:border-[#101317]"
+                        />
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="mt-6 rounded-[34px] border border-[#1e140f]/10 bg-white/78 px-5 py-4 shadow-[0_24px_80px_rgba(53,33,23,0.08)] backdrop-blur-xl">
-            <div class="flex flex-wrap items-center gap-2">
-                <Link
-                    v-for="category in categories"
-                    :key="category"
-                    :href="route('shop.index', { category })"
-                    class="rounded-full border border-[#1e140f]/10 bg-[#fcf7f1] px-4 py-2 text-sm font-semibold text-[#6a5346] transition hover:border-[#ad5a34]/30 hover:text-[#ad5a34]"
-                >
-                    {{ category }}
-                </Link>
-            </div>
-        </section>
+                    <div>
+                        <label class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7583]">
+                            Category
+                        </label>
+                        <select
+                            v-model="filtersForm.category"
+                            class="mt-2 w-full rounded-[14px] border border-[#d9dee4] bg-white px-4 py-3 text-sm text-[#101317] outline-none transition focus:border-[#101317]"
+                        >
+                            <option value="">All categories</option>
+                            <option
+                                v-for="category in categories"
+                                :key="category"
+                                :value="category"
+                            >
+                                {{ category }}
+                            </option>
+                        </select>
+                    </div>
 
-        <section class="mt-8">
-            <div v-if="products.length > 0" class="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
-                <ProductCard
-                    v-for="product in products"
-                    :key="product.id"
-                    :product="product"
-                />
-            </div>
+                    <div>
+                        <label class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7583]">
+                            Sport
+                        </label>
+                        <select
+                            v-model="filtersForm.sport"
+                            class="mt-2 w-full rounded-[14px] border border-[#d9dee4] bg-white px-4 py-3 text-sm text-[#101317] outline-none transition focus:border-[#101317]"
+                        >
+                            <option value="">All sports</option>
+                            <option
+                                v-for="sport in sports"
+                                :key="sport"
+                                :value="sport"
+                            >
+                                {{ sport }}
+                            </option>
+                        </select>
+                    </div>
 
-            <div
-                v-else
-                class="rounded-[36px] border border-[#1e140f]/10 bg-white/78 p-10 text-center shadow-[0_24px_80px_rgba(53,33,23,0.08)] backdrop-blur-xl"
-            >
-                <p class="text-xs uppercase tracking-[0.32em] text-[#8a563c]">
-                    No results
-                </p>
-                <h2 class="mt-4 text-4xl text-[#1e140f]">
-                    No products matched these filters.
-                </h2>
-                <p class="mt-4 text-base leading-8 text-[#5f483b]">
-                    Try a broader search, change the sport, or reset the active
-                    collection filter.
-                </p>
-                <div class="mt-6">
-                    <Link
-                        :href="route('shop.index')"
-                        class="inline-flex items-center gap-2 rounded-full bg-[#1e140f] px-6 py-3 text-sm font-semibold text-[#f7efe6] transition hover:bg-[#ad5a34]"
+                    <div>
+                        <label class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7583]">
+                            Sort
+                        </label>
+                        <select
+                            v-model="filtersForm.sort"
+                            class="mt-2 w-full rounded-[14px] border border-[#d9dee4] bg-white px-4 py-3 text-sm text-[#101317] outline-none transition focus:border-[#101317]"
+                        >
+                            <option value="featured">Featured</option>
+                            <option value="price_asc">Price: low to high</option>
+                            <option value="price_desc">Price: high to low</option>
+                            <option value="name_asc">Name: A-Z</option>
+                        </select>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="inline-flex w-full items-center justify-center rounded-[14px] bg-[#101317] px-5 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#d61f26]"
                     >
-                        View Full Catalog
-                        <span aria-hidden="true">→</span>
-                    </Link>
+                        Apply filters
+                    </button>
+                </form>
+            </aside>
+
+            <div>
+                <div class="retail-card flex flex-col gap-3 rounded-[24px] px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div class="text-sm text-[#4c5968]">
+                        Showing <span class="font-semibold text-[#101317]">{{ products.length }}</span> products
+                    </div>
+                    <div class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7583]">
+                        Retail-inspired collection view
+                    </div>
                 </div>
+
+                <section class="mt-5">
+                    <div v-if="products.length > 0" class="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
+                        <ProductCard
+                            v-for="product in products"
+                            :key="product.id"
+                            :product="product"
+                        />
+                    </div>
+
+                    <div
+                        v-else
+                        class="retail-card rounded-[24px] p-10 text-center"
+                    >
+                        <p class="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#d61f26]">
+                            No results
+                        </p>
+                        <h2 class="mt-3 text-4xl text-[#101317]">
+                            Nothing matched these filters.
+                        </h2>
+                        <div class="mt-6">
+                            <Link
+                                :href="route('shop.index')"
+                                class="inline-flex items-center justify-center rounded-[14px] bg-[#101317] px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#d61f26]"
+                            >
+                                View all products
+                            </Link>
+                        </div>
+                    </div>
+                </section>
             </div>
         </section>
     </StoreLayout>

@@ -1,0 +1,28 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="900" rx="38" fill="#FFFFFF"/>
+<rect x="34" y="34" width="1132" height="832" rx="32" fill="#F5F7FA"/>
+<rect x="66" y="66" width="460" height="768" rx="30" fill="#101317"/>
+<rect x="554" y="66" width="290" height="370" rx="30" fill="#D61F26"/>
+<rect x="876" y="66" width="258" height="370" rx="30" fill="#0F1F33"/>
+<rect x="554" y="468" width="580" height="366" rx="30" fill="#FFFFFF"/>
+<text x="104" y="150" fill="#AEB8C3" font-size="22" font-family="Arial, sans-serif" font-weight="700" letter-spacing="6">APPAREL COLLECTION</text>
+<text x="104" y="244" fill="white" font-size="94" font-family="Arial, sans-serif" font-weight="700">Mens hoodies</text>
+<text x="104" y="324" fill="white" font-size="94" font-family="Arial, sans-serif" font-weight="700">& training tops</text>
+<text x="104" y="392" fill="#D4DDE6" font-size="28" font-family="Arial, sans-serif">Retail-style collection banners with cleaner product focus.</text>
+<text x="594" y="132" fill="white" font-size="22" font-family="Arial, sans-serif" font-weight="700" letter-spacing="6">NEW</text>
+<text x="918" y="132" fill="#D9E2EC" font-size="22" font-family="Arial, sans-serif" font-weight="700" letter-spacing="6">TEAM</text>
+<text x="598" y="560" fill="#D61F26" font-size="22" font-family="Arial, sans-serif" font-weight="700" letter-spacing="6">FAST ORDER</text>
+<text x="598" y="646" fill="#101317" font-size="72" font-family="Arial, sans-serif" font-weight="700">Less text.</text>
+<text x="598" y="714" fill="#101317" font-size="72" font-family="Arial, sans-serif" font-weight="700">More product.</text>
+<g opacity="0.98">
+<rect x="642" y="164" width="110" height="196" rx="26" fill="#FFFFFF"/>
+<rect x="604" y="186" width="50" height="82" rx="18" transform="rotate(-16 604 186)" fill="#F3C6C8"/>
+<rect x="742" y="186" width="50" height="82" rx="18" transform="rotate(16 742 186)" fill="#F3C6C8"/>
+<path d="M666 350H728V486C728 500.359 716.359 512 702 512H692C677.641 512 666 500.359 666 486V350Z" fill="#FFFFFF"/>
+<text x="697" y="268" fill="#D61F26" font-size="74" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">12</text>
+</g>
+<g opacity="0.98">
+<path d="M934 160H1004L1036 192H1096L1128 160H1196L1226 300H1128V610H996V300H904L934 160Z" fill="#EAF0F7"/>
+<text x="1062" y="394" fill="#0F1F33" font-size="98" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">00</text>
+</g>
+</svg>

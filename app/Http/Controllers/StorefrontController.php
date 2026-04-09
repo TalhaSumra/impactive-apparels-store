@@ -15,10 +15,11 @@ class StorefrontController extends Controller
         $filters = [
             'category' => trim((string) $request->input('category', '')),
             'search' => trim((string) $request->input('search', '')),
+            'sort' => trim((string) $request->input('sort', 'featured')),
             'sport' => trim((string) $request->input('sport', '')),
         ];
 
-        $products = Product::query()
+        $productsQuery = Product::query()
             ->when($filters['category'] !== '', function ($query) use ($filters) {
                 $query->where('category', $filters['category']);
             })
@@ -32,9 +33,19 @@ class StorefrontController extends Controller
             })
             ->when($filters['sport'] !== '', function ($query) use ($filters) {
                 $query->where('sport', $filters['sport']);
-            })
-            ->orderByDesc('featured')
-            ->orderBy('name')
+            });
+
+        if ($filters['sort'] === 'price_asc') {
+            $productsQuery->orderBy('price')->orderBy('name');
+        } elseif ($filters['sort'] === 'price_desc') {
+            $productsQuery->orderByDesc('price')->orderBy('name');
+        } elseif ($filters['sort'] === 'name_asc') {
+            $productsQuery->orderBy('name');
+        } else {
+            $productsQuery->orderByDesc('featured')->orderBy('name');
+        }
+
+        $products = $productsQuery
             ->get()
             ->map(fn(Product $product) => ProductPresenter::make($product))
             ->values();
@@ -74,11 +85,11 @@ class StorefrontController extends Controller
             'collections' => $collections,
             'featuredProducts' => $allProducts
                 ->where('featured', true)
-                ->take(4)
+                ->take(6)
                 ->map(fn(Product $product) => ProductPresenter::make($product))
                 ->values(),
             'latestProducts' => $allProducts
-                ->take(6)
+                ->take(8)
                 ->map(fn(Product $product) => ProductPresenter::make($product))
                 ->values(),
         ]);

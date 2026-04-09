@@ -1,0 +1,23 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="900" rx="38" fill="#0F1F33"/>
+<rect x="34" y="34" width="1132" height="832" rx="32" fill="#142840"/>
+<rect x="76" y="76" width="1048" height="748" rx="28" fill="#F7F9FB"/>
+<rect x="116" y="116" width="412" height="668" rx="26" fill="#FFFFFF"/>
+<rect x="562" y="116" width="522" height="208" rx="26" fill="#D61F26"/>
+<rect x="562" y="356" width="522" height="428" rx="26" fill="#101317"/>
+<text x="154" y="192" fill="#D61F26" font-size="22" font-family="Arial, sans-serif" font-weight="700" letter-spacing="6">CHECKOUT</text>
+<text x="154" y="280" fill="#101317" font-size="82" font-family="Arial, sans-serif" font-weight="700">Quick order</text>
+<text x="154" y="352" fill="#101317" font-size="82" font-family="Arial, sans-serif" font-weight="700">for teams</text>
+<text x="154" y="420" fill="#586678" font-size="28" font-family="Arial, sans-serif">Submit names, sizes, and notes in one cleaner flow.</text>
+<text x="600" y="188" fill="white" font-size="24" font-family="Arial, sans-serif" font-weight="700" letter-spacing="6">ORDER SUMMARY</text>
+<text x="602" y="474" fill="#AAB8C6" font-size="24" font-family="Arial, sans-serif" font-weight="700" letter-spacing="6">READY TO SEND</text>
+<text x="602" y="566" fill="white" font-size="78" font-family="Arial, sans-serif" font-weight="700">Cart</text>
+<text x="602" y="638" fill="white" font-size="78" font-family="Arial, sans-serif" font-weight="700">Details</text>
+<text x="602" y="710" fill="white" font-size="78" font-family="Arial, sans-serif" font-weight="700">Done</text>
+<rect x="154" y="474" width="222" height="74" rx="18" fill="#F1F4F7"/>
+<rect x="154" y="576" width="222" height="74" rx="18" fill="#F1F4F7"/>
+<rect x="154" y="678" width="222" height="74" rx="18" fill="#F1F4F7"/>
+<rect x="412" y="474" width="74" height="74" rx="18" fill="#D61F26"/>
+<rect x="412" y="576" width="74" height="74" rx="18" fill="#0F1F33"/>
+<rect x="412" y="678" width="74" height="74" rx="18" fill="#101317"/>
+</svg>

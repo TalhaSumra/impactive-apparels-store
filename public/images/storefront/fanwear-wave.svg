@@ -1,0 +1,41 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="1200" rx="64" fill="#18131D"/>
+<rect width="1600" height="1200" rx="64" fill="url(#paint0_linear_281_18)"/>
+<circle cx="1249" cy="258" r="214" fill="#5166C2" fill-opacity="0.26"/>
+<circle cx="378" cy="960" r="304" fill="#BE3743" fill-opacity="0.18"/>
+<path d="M0 1200V1038C233.629 944.061 421.569 896.525 563.821 895.392C706.073 894.258 916.133 950.633 1193.99 1064.52L1600 1200H0Z" fill="white" fill-opacity="0.06"/>
+<rect x="104" y="112" width="646" height="414" rx="46" fill="#F3E7E2" fill-opacity="0.08" stroke="white" stroke-opacity="0.16"/>
+<rect x="874" y="146" width="620" height="906" rx="46" fill="#F3E7E2" fill-opacity="0.08" stroke="white" stroke-opacity="0.16"/>
+<text x="136" y="194" fill="#E5D2C8" font-size="28" font-family="Arial, sans-serif" letter-spacing="8">FANWEAR / HOODIES / STREET DROP</text>
+<text x="136" y="278" fill="white" font-size="112" font-family="Arial, sans-serif" font-weight="700">Supporter gear</text>
+<text x="136" y="366" fill="white" font-size="112" font-family="Arial, sans-serif" font-weight="700">that feels premium</text>
+<text x="136" y="440" fill="#E5D2C8" font-size="34" font-family="Arial, sans-serif">Names, numbers, and bold all-over graphics.</text>
+<g opacity="0.95">
+<path d="M1158 296H1216L1248 330H1336L1368 296H1426L1458 412H1368V802H1216V412H1126L1158 296Z" fill="#233C84"/>
+<path d="M1158 296H1216L1248 330H1336L1368 296H1426L1458 412H1368V802H1216V412H1126L1158 296Z" fill="url(#paint1_linear_281_18)" fill-opacity="0.34"/>
+<path d="M1216 802H1290L1288 940H1222L1216 802Z" fill="#233C84"/>
+<path d="M1294 802H1368L1362 940H1298L1294 802Z" fill="#233C84"/>
+<text x="1292" y="534" fill="#F4E8E1" font-size="110" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">00</text>
+<text x="1292" y="644" fill="#F4E8E1" font-size="44" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">TEAMNAME</text>
+</g>
+<g opacity="0.94">
+<rect x="960" y="224" width="140" height="176" rx="28" fill="#F3E7E2" fill-opacity="0.08" stroke="white" stroke-opacity="0.16"/>
+<rect x="960" y="440" width="140" height="176" rx="28" fill="#F3E7E2" fill-opacity="0.08" stroke="white" stroke-opacity="0.16"/>
+<rect x="960" y="656" width="140" height="176" rx="28" fill="#F3E7E2" fill-opacity="0.08" stroke="white" stroke-opacity="0.16"/>
+<text x="1030" y="324" fill="#F4E8E1" font-size="34" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">HD</text>
+<text x="1030" y="540" fill="#F4E8E1" font-size="34" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">NAME</text>
+<text x="1030" y="756" fill="#F4E8E1" font-size="34" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">LOGO</text>
+</g>
+<text x="136" y="1010" fill="#F4E8E1" font-size="26" font-family="Arial, sans-serif" letter-spacing="6">CUSTOM   /   MERCH   /   TEAM DROP</text>
+<defs>
+<linearGradient id="paint0_linear_281_18" x1="118" y1="64" x2="1456" y2="1096" gradientUnits="userSpaceOnUse">
+<stop stop-color="#211820"/>
+<stop offset="0.52" stop-color="#37213A"/>
+<stop offset="1" stop-color="#171217"/>
+</linearGradient>
+<linearGradient id="paint1_linear_281_18" x1="1184" y1="314" x2="1408" y2="890" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D03443"/>
+<stop offset="1" stop-color="#F1B06D"/>
+</linearGradient>
+</defs>
+</svg>

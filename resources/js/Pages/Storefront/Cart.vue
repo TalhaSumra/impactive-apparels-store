@@ -40,28 +40,26 @@ function updateQuantity(itemKey, quantity) {
 
     <StoreLayout>
         <section v-if="cart.count > 0" class="grid gap-6 xl:grid-cols-[1.12fr_0.88fr]">
-            <div
-                class="rounded-[38px] border border-[#1e140f]/10 bg-white/78 p-6 shadow-[0_24px_80px_rgba(53,33,23,0.08)] backdrop-blur-xl sm:p-8"
-            >
+            <div class="retail-card rounded-[24px] p-6 xl:p-8">
                 <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                        <p class="text-xs uppercase tracking-[0.32em] text-[#8a563c]">
+                        <p class="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#d61f26]">
                             Cart
                         </p>
-                        <h1 class="mt-3 text-5xl leading-tight text-[#1e140f]">
-                            Review your order before checkout.
+                        <h1 class="mt-3 text-[clamp(3rem,5vw,5rem)] leading-[0.9] text-[#101317]">
+                            Review your order
                         </h1>
                     </div>
-                    <div class="text-sm text-[#6b5346]">
-                        {{ cart.count }} total items
+                    <div class="text-sm text-[#4c5968]">
+                        {{ cart.count }} items
                     </div>
                 </div>
 
-                <div class="mt-8 space-y-4">
+                <div class="mt-6 space-y-4">
                     <article
                         v-for="item in cart.items"
                         :key="item.key"
-                        class="grid gap-4 rounded-[30px] border border-[#1e140f]/8 bg-[#fcf7f1] p-4 lg:grid-cols-[220px_1fr]"
+                        class="grid gap-4 rounded-[20px] border border-[#d9dee4] bg-[#f7f9fb] p-4 lg:grid-cols-[240px_1fr]"
                     >
                         <ProductVisual :product="item.product" compact />
 
@@ -69,54 +67,52 @@ function updateQuantity(itemKey, quantity) {
                             <div>
                                 <div class="flex flex-wrap items-start justify-between gap-3">
                                     <div>
-                                        <p
-                                            class="text-xs uppercase tracking-[0.28em] text-[#8a563c]"
-                                        >
+                                        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7583]">
                                             {{ item.product.category }}
                                         </p>
                                         <Link
                                             :href="route('products.show', item.product.slug)"
-                                            class="mt-2 block text-3xl leading-tight text-[#1e140f] transition hover:text-[#ad5a34]"
+                                            class="mt-2 block text-[2.4rem] leading-[0.92] text-[#101317] transition hover:text-[#d61f26]"
                                         >
                                             {{ item.product.name }}
                                         </Link>
                                     </div>
                                     <div class="text-right">
-                                        <p class="text-xs uppercase tracking-[0.26em] text-[#8a563c]">
-                                            Line Total
+                                        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6a7583]">
+                                            Total
                                         </p>
-                                        <p class="mt-2 text-2xl text-[#1e140f]">
+                                        <p class="mt-2 text-2xl font-semibold text-[#101317]">
                                             {{ formatPrice(item.line_total) }}
                                         </p>
                                     </div>
                                 </div>
 
-                                <div class="mt-4 flex flex-wrap gap-2 text-sm font-semibold text-[#5f483b]">
-                                    <span class="rounded-full border border-[#1e140f]/10 bg-white px-3 py-2">
-                                        Size: {{ item.size }}
+                                <div class="mt-4 flex flex-wrap gap-2 text-sm font-semibold text-[#4c5968]">
+                                    <span class="rounded-full bg-white px-3 py-1.5">
+                                        Size {{ item.size }}
                                     </span>
-                                    <span class="rounded-full border border-[#1e140f]/10 bg-white px-3 py-2">
+                                    <span class="rounded-full bg-white px-3 py-1.5">
                                         {{ formatPrice(item.unit_price) }} each
                                     </span>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                                <div class="inline-flex items-center rounded-full border border-[#1e140f]/10 bg-white p-1">
+                                <div class="inline-flex items-center rounded-[14px] border border-[#d9dee4] bg-white p-1">
                                     <button
                                         type="button"
                                         @click="updateQuantity(item.key, item.quantity - 1)"
-                                        class="rounded-full px-4 py-2 text-sm font-semibold text-[#1e140f] transition hover:bg-[#f5ece3]"
+                                        class="rounded-[10px] px-4 py-2 text-sm font-semibold text-[#101317] transition hover:bg-[#f3f5f7]"
                                     >
                                         −
                                     </button>
-                                    <span class="min-w-12 text-center text-sm font-semibold text-[#1e140f]">
+                                    <span class="min-w-12 text-center text-sm font-semibold text-[#101317]">
                                         {{ item.quantity }}
                                     </span>
                                     <button
                                         type="button"
                                         @click="updateQuantity(item.key, item.quantity + 1)"
-                                        class="rounded-full px-4 py-2 text-sm font-semibold text-[#1e140f] transition hover:bg-[#f5ece3]"
+                                        class="rounded-[10px] px-4 py-2 text-sm font-semibold text-[#101317] transition hover:bg-[#f3f5f7]"
                                     >
                                         +
                                     </button>
@@ -125,7 +121,7 @@ function updateQuantity(itemKey, quantity) {
                                 <button
                                     type="button"
                                     @click="removeItem(item.key)"
-                                    class="rounded-full border border-[#1e140f]/10 bg-white px-4 py-2 text-sm font-semibold text-[#1e140f] transition hover:border-[#b03e35]/30 hover:text-[#b03e35]"
+                                    class="rounded-[12px] border border-[#101317] px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.12em] text-[#101317] transition hover:border-[#d61f26] hover:text-[#d61f26]"
                                 >
                                     Remove
                                 </button>
@@ -136,23 +132,21 @@ function updateQuantity(itemKey, quantity) {
             </div>
 
             <div class="space-y-6">
-                <div
-                    class="rounded-[38px] border border-[#1e140f]/10 bg-white/78 p-6 shadow-[0_24px_80px_rgba(53,33,23,0.08)] backdrop-blur-xl sm:p-8"
-                >
-                    <p class="text-xs uppercase tracking-[0.32em] text-[#8a563c]">
-                        Order Summary
+                <div class="retail-card rounded-[24px] p-6">
+                    <p class="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#6a7583]">
+                        Summary
                     </p>
                     <div class="mt-5 space-y-4">
-                        <div class="flex items-center justify-between text-sm text-[#6b5346]">
+                        <div class="flex items-center justify-between text-sm text-[#4c5968]">
                             <span>Items</span>
                             <span>{{ cart.count }}</span>
                         </div>
-                        <div class="flex items-center justify-between text-sm text-[#6b5346]">
-                            <span>Production shipping</span>
-                            <span>Confirmed at checkout</span>
+                        <div class="flex items-center justify-between text-sm text-[#4c5968]">
+                            <span>Shipping</span>
+                            <span>Confirmed after review</span>
                         </div>
-                        <div class="h-px bg-[#1e140f]/10"></div>
-                        <div class="flex items-center justify-between text-base font-semibold text-[#1e140f]">
+                        <div class="h-px bg-[#e1e6eb]"></div>
+                        <div class="flex items-center justify-between text-lg font-semibold text-[#101317]">
                             <span>Subtotal</span>
                             <span>{{ formatPrice(cart.subtotal) }}</span>
                         </div>
@@ -160,62 +154,73 @@ function updateQuantity(itemKey, quantity) {
 
                     <Link
                         :href="route('checkout.index')"
-                        class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#1e140f] px-6 py-3 text-sm font-semibold text-[#f7efe6] transition hover:bg-[#ad5a34]"
+                        class="mt-6 inline-flex w-full items-center justify-center rounded-[14px] bg-[#d61f26] px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#b11218]"
                     >
-                        Continue to Checkout
-                        <span aria-hidden="true">→</span>
+                        Continue to checkout
                     </Link>
 
-                    <p class="mt-4 text-sm leading-7 text-[#6b5346]">
-                        Customers can place the order online now. Final branding
-                        notes, sponsor placements, and production requirements
-                        can be added during checkout.
+                    <p class="mt-4 text-sm leading-7 text-[#4c5968]">
+                        Add final team names, logos, and custom notes during checkout.
                     </p>
                 </div>
 
-                <div
-                    class="rounded-[38px] border border-[#1e140f]/10 bg-[#1a120e] p-6 text-[#f7efe6] shadow-[0_30px_120px_rgba(26,18,14,0.28)] sm:p-8"
-                >
-                    <p class="text-xs uppercase tracking-[0.32em] text-[#d9b392]">
-                        Need more items?
-                    </p>
-                    <h2 class="mt-4 text-4xl leading-tight">
-                        Keep building the order with more kits, hoodies, or team
-                        bundles.
-                    </h2>
-                    <Link
-                        :href="route('shop.index')"
-                        class="mt-6 inline-flex items-center gap-2 rounded-full bg-[#ad5a34] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#8d4829]"
+                <div class="retail-card overflow-hidden rounded-[24px]">
+                    <div
+                        class="border-b border-[#d9dee4]"
+                        :class="cart.items[0]?.product?.image ? '' : 'bg-[linear-gradient(145deg,#101317_0%,#2b3138_44%,#d61f26_100%)] px-5 py-12 text-white'"
                     >
-                        Continue Shopping
-                        <span aria-hidden="true">→</span>
-                    </Link>
+                        <img
+                            v-if="cart.items[0]?.product?.image"
+                            :src="cart.items[0].product.image"
+                            alt="Cart banner"
+                            class="h-full w-full object-cover"
+                        />
+                        <div v-else>
+                            <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/66">
+                                Cart preview
+                            </p>
+                            <p class="mt-3 max-w-sm text-[2.4rem] leading-[0.92] text-white">
+                                Add real apparel artwork here once the product files are uploaded.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#d61f26]">
+                            Need more items?
+                        </p>
+                        <h2 class="mt-2 text-3xl text-[#101317]">
+                            Keep building the order
+                        </h2>
+                        <Link
+                            :href="route('shop.index')"
+                            class="mt-5 inline-flex items-center justify-center rounded-[14px] border border-[#101317] px-5 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-[#101317] transition hover:border-[#d61f26] hover:text-[#d61f26]"
+                        >
+                            Continue shopping
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section
             v-else
-            class="rounded-[38px] border border-[#1e140f]/10 bg-white/78 p-10 text-center shadow-[0_24px_80px_rgba(53,33,23,0.08)] backdrop-blur-xl"
+            class="retail-card rounded-[24px] p-10 text-center"
         >
-            <p class="text-xs uppercase tracking-[0.32em] text-[#8a563c]">
+            <p class="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#d61f26]">
                 Your cart is empty
             </p>
-            <h1 class="mt-4 text-5xl leading-tight text-[#1e140f]">
-                Start with the catalog and build your order.
+            <h1 class="mt-4 text-[clamp(3rem,5vw,4.8rem)] leading-[0.92] text-[#101317]">
+                Start with the collection page
             </h1>
-            <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#5f483b]">
-                This project now supports a real public ordering flow, so once
-                products are added here the customer can continue straight into
-                checkout.
+            <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#4c5968]">
+                Browse a collection, choose a style, and build the order from there.
             </p>
             <div class="mt-6">
                 <Link
                     :href="route('shop.index')"
-                    class="inline-flex items-center gap-2 rounded-full bg-[#1e140f] px-6 py-3 text-sm font-semibold text-[#f7efe6] transition hover:bg-[#ad5a34]"
+                    class="inline-flex items-center justify-center rounded-[14px] bg-[#101317] px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#d61f26]"
                 >
-                    Browse Products
-                    <span aria-hidden="true">→</span>
+                    Browse products
                 </Link>
             </div>
         </section>
@@ -223,22 +228,22 @@ function updateQuantity(itemKey, quantity) {
         <section v-if="recommendedProducts.length > 0" class="mt-8">
             <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                    <p class="text-xs uppercase tracking-[0.32em] text-[#8a563c]">
-                        Recommended Products
+                    <p class="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#6a7583]">
+                        Recommended
                     </p>
-                    <h2 class="mt-3 text-4xl text-[#1e140f]">
-                        Add a few more pieces before checkout.
+                    <h2 class="mt-2 text-4xl text-[#101317]">
+                        Add more styles before checkout
                     </h2>
                 </div>
                 <Link
                     :href="route('shop.index')"
-                    class="text-sm font-semibold text-[#8a563c] transition hover:text-[#ad5a34]"
+                    class="text-sm font-semibold uppercase tracking-[0.12em] text-[#d61f26]"
                 >
-                    View full catalog →
+                    View all
                 </Link>
             </div>
 
-            <div class="mt-6 grid gap-5 lg:grid-cols-3">
+            <div class="mt-5 grid gap-5 lg:grid-cols-3">
                 <ProductCard
                     v-for="product in recommendedProducts"
                     :key="product.id"
